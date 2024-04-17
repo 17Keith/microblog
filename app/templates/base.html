@@ -10,11 +10,20 @@
   <body>
     <div>
       Microblog:
-      <a href="/index">Home </a>
-      <a href="/login">Login</a> <!-- Add a login link to the navigation bar-->
+      <!-- Use url_for() function for the links instead of using '/index' & '/login' -->
+      <a href="{{ url_for ('index') }}">Home </a>
+      <a href="{{ url_for ('login') }}">Login</a>
+      <!-- Add a login link to the navigation bar-->
     </div>
     <hr />
-    {% block content %}{% endblock %}
+    <!-- Adding flash messages to be rendered when the user is attempting to login -->
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %} {% block content %}{% endblock %}
   </body>
 </html>
 
