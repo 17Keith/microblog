@@ -7,6 +7,14 @@ from flask_login import login_required
 import sqlalchemy as sa
 from app import app, db
 from app.models import User
+from datetime import datetime, timezone
+
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.now(timezone.utc)
+        db.session.commit()
 
 # Use render_template() function
 
