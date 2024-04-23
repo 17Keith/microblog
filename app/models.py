@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from hashlib import md5
 from typing import Optional
 import sqlalchemy as sa
 import sqlalchemy.orm as so
@@ -26,6 +27,10 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def avatar(self, size):
+        digest = md5(self.email.lower().encode('utf_8')).hexdigest()
+        return f'https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}'
 
 
 @login.user_loader
