@@ -1,4 +1,3 @@
-from app import routes, models, errors
 from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
@@ -43,3 +42,5 @@ file_handler.addHandler(file_handler)
 
 app.logger.setLevel(logging.INFO)
 app.logger.info('Microblog startup')
+
+from app import routes, models, errors
