@@ -35,14 +35,11 @@ class User(UserMixin, db.Model):
     following: so.WriteOnlyMapped['User'] = so.relationship(
         secondary=followers, primaryjoin=(followers.c.follower_id == id),
         secondaryjoin=(followers.c.followed_id == id),
-        back_populates='followers'
-    )
-
+        back_populates='followers')
     followers: so.WriteOnlyMapped['User'] = so.relationship(
         secondary=followers, primaryjoin=(followers.c.followed_id == id),
         secondaryjoin=(followers.c.follower_id == id),
-        back_populates='following'
-    )
+        back_populates='following')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -71,16 +68,14 @@ class User(UserMixin, db.Model):
 
     def followers_count(self):
         query = sa.select(sa.func.count()).select_from(
-            self.followers.select().subquery()
-        )
+            self.followers.select().subquery())
         return db.session.scalar(query)
-    
+
     def following_count(self):
         query = sa.select(sa.func.count()).select_from(
-            self.following.select().subquery()
-        )
+            self.following.select().subquery())
         return db.session.scalar(query)
-    
+
     def following_posts(self):
         Author = so.aliased(User)
         Follower = so.aliased(User)
@@ -91,7 +86,7 @@ class User(UserMixin, db.Model):
             .where(sa.or_(
                 Follower.id == self.id,
                 Author.id == self.id,
-                ))
+            ))
             .group_by(Post)
             .order_by(Post.timestamp.desc())
         )
