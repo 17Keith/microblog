@@ -53,6 +53,7 @@ class EditProfileForm(FlaskForm):
         self.original_username = original_username
 
     def validate_username(self, username):
+        user = None
         if username.data != self.original_username:
             user = db.session.scalar(sa.select(User).where(
                 User.username == self.username.data
