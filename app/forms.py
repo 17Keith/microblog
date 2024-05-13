@@ -52,14 +52,18 @@ class EditProfileForm(FlaskForm):
         super().__init__(*args, **kwargs)
         self.original_username = original_username
 
-    def validate_username(self, username):
-        user = None
-        if username.data != self.original_username:
-            user = db.session.scalar(sa.select(User).where(
-                User.username == self.username.data
-            ))
-        if user is not None:
-            raise ValidationError('Please use a different username.')
+
+def validate_username(self, username):
+    user = db.session.query(User).filter(
+        User.username == username.data).first()
+    if user:
+        raise ValidationError('Please use a different username - This one is already taken.')
+
+
+def validate_email(self, email):
+    user = db.session.query(User).filter(User.email == email.data).first()
+    if user:
+        raise ValidationError('Please use a different email address.')
 
 
 class EmptyForm(FlaskForm):
