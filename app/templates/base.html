@@ -6,7 +6,7 @@
     {% if title %}
     <title>{{ title }} - Microblog</title>
     {% else %}
-    <title>Welcome to Microblog</title>
+    <title>{{ _('Welcome to Microblog') }}</title>
     {% endif %}
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -37,7 +37,7 @@
                 class="nav-link"
                 aria-current="page"
                 href="{{ url_for('index') }}"
-                >Home</a
+                >{{ _('Home') }}</a
               >
             </li>
             <li class="nav-item">
@@ -45,7 +45,7 @@
                 class="nav-link"
                 aria-current="page"
                 href="{{ url_for('explore') }}"
-                >Explore</a
+                >{{ _('Explore') }}</a
               >
             </li>
           </ul>
@@ -56,7 +56,7 @@
                 class="nav-link"
                 aria-current="page"
                 href="{{ url_for('login') }}"
-                >Login</a
+                >{{ _('Login') }}</a
               >
             </li>
             {% else %}
@@ -65,7 +65,7 @@
                 class="nav-link"
                 aria-current="page"
                 href="{{ url_for('user', username=current_user.username) }}"
-                >Profile</a
+                >{{ _('Profile') }}</a
               >
             </li>
             <li class="nav-item">
@@ -73,7 +73,7 @@
                 class="nav-link"
                 aria-current="page"
                 href="{{ url_for('logout') }}"
-                >Logout</a
+                >{{ _('Logout') }}</a
               >
             </li>
             {% endif %}
@@ -92,6 +92,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    {{ moment.include_moment() }}
+    {{ moment.include_moment() }} {{ moment.lang(g.locale) }}
   </body>
 </html>
