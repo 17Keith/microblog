@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-05-17 14:49+0300\n"
+"POT-Creation-Date: 2024-05-17 15:09+0300\n"
 "PO-Revision-Date: 2024-05-17 14:55+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -100,7 +100,9 @@ msgstr "Félicitations, vous êtes maintenant un utilisateur enregistré!"
 
 #: app/routes.py:112
 msgid "Check your email for the instructions to reset your password"
-msgstr "Vérifiez votre e-mail pour les instructions de réinitialisation de votre mot de passe"
+msgstr ""
+"Vérifiez votre e-mail pour les instructions de réinitialisation de votre "
+"mot de passe"
 
 #: app/routes.py:115
 msgid "Reset Password"
@@ -190,3 +192,4 @@ msgstr "Mot de passe oublié?"
 #: app/templates/login.html:12
 msgid "Click to Reset It"
 msgstr "Cliquez pour le réinitialiser"
+

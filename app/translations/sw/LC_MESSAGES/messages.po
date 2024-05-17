@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-05-17 14:49+0300\n"
+"POT-Creation-Date: 2024-05-17 15:09+0300\n"
 "PO-Revision-Date: 2024-05-17 14:55+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: sw\n"
@@ -190,3 +190,4 @@ msgstr "Umesahau Nenosiri Lako?"
 #: app/templates/login.html:12
 msgid "Click to Reset It"
 msgstr "Bofya kuweka upya"
+
